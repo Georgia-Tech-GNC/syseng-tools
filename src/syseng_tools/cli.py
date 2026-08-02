@@ -6,6 +6,12 @@ from pathlib import Path
 from syseng_tools.check import run_check
 from syseng_tools.project import ProjectConfig, load_project_config
 from syseng_tools.risk import generate_risk_register
+from syseng_tools.serve import (
+    DEFAULT_HOST,
+    DEFAULT_PORT,
+    generated_html_dir,
+    serve_static_site,
+)
 from syseng_tools.strictdoc_runner import export_strictdoc
 
 
@@ -61,6 +67,22 @@ def build_parser() -> argparse.ArgumentParser:
         help="Risk report output directory. Defaults to build/syseng.",
     )
 
+    serve_parser = subparsers.add_parser(
+        "serve",
+        help="Serve the generated StrictDoc HTML.",
+    )
+    serve_parser.add_argument(
+        "--host",
+        default=DEFAULT_HOST,
+        help=f"Host interface to bind. Defaults to {DEFAULT_HOST}.",
+    )
+    serve_parser.add_argument(
+        "--port",
+        type=int,
+        default=DEFAULT_PORT,
+        help=f"Port to bind. Defaults to {DEFAULT_PORT}.",
+    )
+
     return parser
 
 
@@ -85,6 +107,11 @@ def command_risk(
     return 0
 
 
+def command_serve(project: ProjectConfig, host: str, port: int) -> int:
+    serve_static_site(generated_html_dir(project), host, port)
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
@@ -97,6 +124,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_check(project, args.warnings_as_errors)
     if args.command == "risk":
         return command_risk(project, args.strictdoc_json, args.output_dir)
+    if args.command == "serve":
+        return command_serve(project, args.host, args.port)
 
     parser.error(f"Unsupported command: {args.command}")
     return 2
