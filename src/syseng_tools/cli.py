@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+from syseng_tools.check import run_check
 from syseng_tools.project import ProjectConfig, load_project_config
 from syseng_tools.risk import generate_risk_register
 from syseng_tools.strictdoc_runner import export_strictdoc
@@ -31,6 +32,16 @@ def build_parser() -> argparse.ArgumentParser:
         type=Path,
         default=None,
         help="StrictDoc output directory. Defaults to build/strictdoc.",
+    )
+
+    check_parser = subparsers.add_parser(
+        "check",
+        help="Run StrictDoc parsing and shared automated checks.",
+    )
+    check_parser.add_argument(
+        "--warnings-as-errors",
+        action="store_true",
+        help="Return a failing exit code when warnings are reported.",
     )
 
     risk_parser = subparsers.add_parser(
@@ -82,6 +93,8 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "export":
         return command_export(project, args.output_dir)
+    if args.command == "check":
+        return run_check(project, args.warnings_as_errors)
     if args.command == "risk":
         return command_risk(project, args.strictdoc_json, args.output_dir)
 
