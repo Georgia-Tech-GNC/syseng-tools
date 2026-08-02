@@ -46,8 +46,18 @@ def _strictdoc_config_text(project: ProjectConfig) -> str:
     return f'''from strictdoc.core.project_config import ProjectConfig
 
 
-def create_config() -> ProjectConfig:
-    return ProjectConfig(
+class SysengProjectConfig(ProjectConfig):
+    def validate_and_finalize(self) -> None:
+        super().validate_and_finalize()
+        self.exclude_doc_paths = [
+            path
+            for path in self.exclude_doc_paths
+            if path not in {{"build/", "/build/", "build/**", "/build/**"}}
+        ]
+
+
+def create_config() -> SysengProjectConfig:
+    return SysengProjectConfig(
         project_title={project.title!r},
         include_doc_paths=[
             {records_pattern!r},
