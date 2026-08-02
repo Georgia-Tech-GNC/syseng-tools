@@ -12,6 +12,26 @@ Author-facing usage is defined in `docs/strictdoc-integration.md` in
 This README is for maintaining the shared tooling package. It explains what the
 package owns and how the commands work under the hood.
 
+## Author Installation
+
+Program repositories should pin `syseng-tools` in `requirements-tools.txt`:
+
+```text
+syseng-tools @ git+https://github.com/Georgia-Tech-GNC/syseng-tools.git@v0.1.0
+```
+
+Authors install the pinned tools from the program repository:
+
+```text
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements-tools.txt
+syseng --help
+```
+
+The virtual environment is local developer state and should not be committed.
+
 ## Command Entry Point
 
 ```text
