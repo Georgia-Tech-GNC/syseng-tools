@@ -17,8 +17,10 @@ owns and how the commands work under the hood.
 Program repositories should pin `syseng-tools` in `requirements-tools.txt`:
 
 ```text
-syseng-tools @ git+https://github.com/Georgia-Tech-GNC/syseng-tools.git@v0.1.1
+syseng-tools @ git+https://github.com/Georgia-Tech-GNC/syseng-tools.git@vX.Y.Z
 ```
+
+Replace `vX.Y.Z` with the release tag selected for that program repository.
 
 Authors install the pinned tools from the program repository:
 
