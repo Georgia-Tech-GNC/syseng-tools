@@ -1,0 +1,242 @@
+[GRAMMAR]
+ELEMENTS:
+- TAG: MISSION_RECORD
+  FIELDS:
+  - TITLE: UID
+    HUMAN_TITLE: UID
+    TYPE: String
+    REQUIRED: True
+  - TITLE: RECORD_TYPE
+    HUMAN_TITLE: Record type
+    TYPE: SingleChoice(Objective, Constraint)
+    REQUIRED: True
+  - TITLE: TITLE
+    HUMAN_TITLE: Title
+    TYPE: String
+    REQUIRED: True
+  - TITLE: SUBTEAM_OWNER
+    HUMAN_TITLE: Subteam owner
+    TYPE: MultipleChoice(Systems, Structures, Electrical, Software, Controls, Aerodynamics)
+    REQUIRED: True
+  - TITLE: INDIVIDUAL_OWNER
+    HUMAN_TITLE: Individual owner
+    TYPE: String
+    REQUIRED: True
+  - TITLE: VEHICLE_CONFIGURATION
+    HUMAN_TITLE: Vehicle configuration
+    TYPE: String
+    REQUIRED: True
+  - TITLE: MISSION_PHASE
+    HUMAN_TITLE: Mission phase
+    TYPE: String
+    REQUIRED: True
+  - TITLE: FLIGHT_ATTEMPT
+    HUMAN_TITLE: Flight attempt
+    TYPE: String
+    REQUIRED: True
+  - TITLE: OPEN_ITEM_STATUS
+    HUMAN_TITLE: Open item status
+    TYPE: SingleChoice(None, TBD, TBR, TBS)
+    REQUIRED: True
+  - TITLE: RESOLUTION_OWNER
+    HUMAN_TITLE: Resolution owner
+    TYPE: String
+    REQUIRED: False
+  - TITLE: RESOLUTION_PLAN
+    HUMAN_TITLE: Resolution plan
+    TYPE: String
+    REQUIRED: False
+  - TITLE: RESOLUTION_DUE_DATE
+    HUMAN_TITLE: Resolution due date
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATUS
+    HUMAN_TITLE: Status
+    TYPE: SingleChoice(Draft, Approved, Retired, Superseded)
+    REQUIRED: True
+  - TITLE: STATEMENT
+    HUMAN_TITLE: Statement
+    TYPE: String
+    REQUIRED: True
+  - TITLE: RATIONALE
+    HUMAN_TITLE: Rationale
+    TYPE: String
+    REQUIRED: True
+- TAG: REQUIREMENT
+  FIELDS:
+  - TITLE: UID
+    HUMAN_TITLE: UID
+    TYPE: String
+    REQUIRED: True
+  - TITLE: LEVEL
+    HUMAN_TITLE: Level
+    TYPE: SingleChoice(L1, L2)
+    REQUIRED: True
+  - TITLE: REQUIREMENT_TYPE
+    HUMAN_TITLE: Requirement type
+    TYPE: SingleChoice(Functional, Performance, Interface, Physical, "Design Constraint", Safety, Environmental)
+    REQUIRED: True
+  - TITLE: TITLE
+    HUMAN_TITLE: Title
+    TYPE: String
+    REQUIRED: True
+  - TITLE: APPLICABLE_SUBSYSTEM
+    HUMAN_TITLE: Applicable subsystem
+    TYPE: MultipleChoice(Airframe, Propulsion, Actuation, Avionics, Power, Flight_Software, Recovery, Ground_Systems, N_A)
+    REQUIRED: True
+  - TITLE: SUBTEAM_OWNER
+    HUMAN_TITLE: Subteam owner
+    TYPE: MultipleChoice(Systems, Structures, Electrical, Software, Controls, Aerodynamics)
+    REQUIRED: True
+  - TITLE: INDIVIDUAL_OWNER
+    HUMAN_TITLE: Individual owner
+    TYPE: String
+    REQUIRED: True
+  - TITLE: VEHICLE_CONFIGURATION
+    HUMAN_TITLE: Vehicle configuration
+    TYPE: String
+    REQUIRED: True
+  - TITLE: MISSION_PHASE
+    HUMAN_TITLE: Mission phase
+    TYPE: String
+    REQUIRED: True
+  - TITLE: FLIGHT_ATTEMPT
+    HUMAN_TITLE: Flight attempt
+    TYPE: String
+    REQUIRED: True
+  - TITLE: OPEN_ITEM_STATUS
+    HUMAN_TITLE: Open item status
+    TYPE: SingleChoice(None, TBD, TBR, TBS)
+    REQUIRED: True
+  - TITLE: RESOLUTION_OWNER
+    HUMAN_TITLE: Resolution owner
+    TYPE: String
+    REQUIRED: False
+  - TITLE: RESOLUTION_PLAN
+    HUMAN_TITLE: Resolution plan
+    TYPE: String
+    REQUIRED: False
+  - TITLE: RESOLUTION_DUE_DATE
+    HUMAN_TITLE: Resolution due date
+    TYPE: String
+    REQUIRED: False
+  - TITLE: VERIFICATION_METHOD
+    HUMAN_TITLE: Verification method
+    TYPE: SingleChoice(Test, Analysis, Inspection, Demonstration)
+    REQUIRED: True
+  - TITLE: VERIFICATION_PLAN_LINK
+    HUMAN_TITLE: Verification plan link
+    TYPE: String
+    REQUIRED: False
+  - TITLE: VERIFICATION_RESULT_LINK
+    HUMAN_TITLE: Verification result link
+    TYPE: String
+    REQUIRED: False
+  - TITLE: WAIVER_LINK
+    HUMAN_TITLE: Waiver link
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATUS
+    HUMAN_TITLE: Status
+    TYPE: SingleChoice(Draft, Approved, Verified, Failed, Waived, Retired, Superseded)
+    REQUIRED: True
+  - TITLE: STATEMENT
+    HUMAN_TITLE: Statement
+    TYPE: String
+    REQUIRED: True
+  - TITLE: RATIONALE
+    HUMAN_TITLE: Rationale
+    TYPE: String
+    REQUIRED: True
+  RELATIONS:
+  - TYPE: Parent
+- TAG: RISK
+  FIELDS:
+  - TITLE: UID
+    HUMAN_TITLE: UID
+    TYPE: String
+    REQUIRED: True
+  - TITLE: RISK_TYPE
+    HUMAN_TITLE: Risk type
+    TYPE: SingleChoice(Safety, "Mission Success", Technical, Schedule, Resource)
+    REQUIRED: True
+  - TITLE: TITLE
+    HUMAN_TITLE: Title
+    TYPE: String
+    REQUIRED: True
+  - TITLE: SUBTEAM_OWNER
+    HUMAN_TITLE: Subteam owner
+    TYPE: MultipleChoice(Systems, Structures, Electrical, Software, Controls, Aerodynamics)
+    REQUIRED: True
+  - TITLE: INDIVIDUAL_OWNER
+    HUMAN_TITLE: Individual owner
+    TYPE: String
+    REQUIRED: True
+  - TITLE: VEHICLE_CONFIGURATION
+    HUMAN_TITLE: Vehicle configuration
+    TYPE: String
+    REQUIRED: True
+  - TITLE: MISSION_PHASE
+    HUMAN_TITLE: Mission phase
+    TYPE: String
+    REQUIRED: True
+  - TITLE: FLIGHT_ATTEMPT
+    HUMAN_TITLE: Flight attempt
+    TYPE: String
+    REQUIRED: True
+  - TITLE: INITIAL_LIKELIHOOD
+    HUMAN_TITLE: Initial likelihood
+    TYPE: SingleChoice(Low, Medium, High)
+    REQUIRED: True
+  - TITLE: INITIAL_SEVERITY
+    HUMAN_TITLE: Initial severity
+    TYPE: SingleChoice(Low, Medium, High)
+    REQUIRED: True
+  - TITLE: CURRENT_LIKELIHOOD
+    HUMAN_TITLE: Current likelihood
+    TYPE: SingleChoice(Low, Medium, High)
+    REQUIRED: True
+  - TITLE: CURRENT_SEVERITY
+    HUMAN_TITLE: Current severity
+    TYPE: SingleChoice(Low, Medium, High)
+    REQUIRED: True
+  - TITLE: RISK_RESPONSE
+    HUMAN_TITLE: Risk response
+    TYPE: SingleChoice(Watch, Mitigate, Avoid, Accept)
+    REQUIRED: True
+  - TITLE: RESPONSE_PLAN
+    HUMAN_TITLE: Response plan
+    TYPE: String
+    REQUIRED: False
+  - TITLE: DUE_DATE
+    HUMAN_TITLE: Due date
+    TYPE: String
+    REQUIRED: False
+  - TITLE: LINKED_ARTIFACTS
+    HUMAN_TITLE: Linked artifacts
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATUS
+    HUMAN_TITLE: Status
+    TYPE: SingleChoice(Open, Accepted, Closed, Retired)
+    REQUIRED: True
+  - TITLE: DISPOSITION_NOTES
+    HUMAN_TITLE: Disposition notes
+    TYPE: String
+    REQUIRED: False
+  - TITLE: CONTENT
+    HUMAN_TITLE: Risk claim
+    TYPE: String
+    REQUIRED: False
+  - TITLE: CONDITION
+    HUMAN_TITLE: Condition
+    TYPE: String
+    REQUIRED: True
+  - TITLE: CONSEQUENCE
+    HUMAN_TITLE: Consequence
+    TYPE: String
+    REQUIRED: True
+  RELATIONS:
+  - TYPE: Parent
+    ROLE: Affects
+    REVERSE_ROLE: Affected by risk
