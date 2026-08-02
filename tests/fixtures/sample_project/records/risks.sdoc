@@ -1,0 +1,31 @@
+[DOCUMENT]
+TITLE: Risks
+
+[GRAMMAR]
+IMPORT_FROM_FILE: @program
+
+[RISK]
+UID: TVC-RISK-003
+RISK_TYPE: Technical
+TITLE: Actuator Bandwidth Shortfall
+SUBTEAM_OWNER: Controls
+INDIVIDUAL_OWNER: Controls Lead
+VEHICLE_CONFIGURATION: TVC-F1
+MISSION_PHASE: Powered ascent
+FLIGHT_ATTEMPT: Flight 1
+INITIAL_LIKELIHOOD: Medium
+INITIAL_SEVERITY: High
+CURRENT_LIKELIHOOD: Medium
+CURRENT_SEVERITY: High
+RISK_RESPONSE: Mitigate
+RESPONSE_PLAN: Complete actuator frequency-response testing and update the control model with measured bandwidth.
+DUE_DATE: Before CDR
+LINKED_ARTIFACTS: docs/verification/actuator-frequency-response-test.md
+STATUS: Open
+CONDITION: Actuator bandwidth is lower than assumed.
+CONSEQUENCE: The vehicle may fail to maintain commanded attitude during powered ascent.
+RELATIONS:
+- TYPE: Parent
+  VALUE: TVC-REQ-001
+  ROLE: Affects
+

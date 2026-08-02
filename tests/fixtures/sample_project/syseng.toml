@@ -1,0 +1,6 @@
+project_title = "Sample TVC"
+project_prefix = "TVC"
+records_dir = "records"
+allowed_vehicle_configurations = ["TVC-F1"]
+allowed_mission_phases = ["Powered ascent"]
+allowed_flight_attempts = ["Flight 1"]

@@ -1,0 +1,46 @@
+[DOCUMENT]
+TITLE: Requirements
+
+[GRAMMAR]
+IMPORT_FROM_FILE: @program
+
+[REQUIREMENT]
+UID: TVC-REQ-001
+LEVEL: L1
+REQUIREMENT_TYPE: Functional
+TITLE: Powered Ascent Attitude Estimate
+APPLICABLE_SUBSYSTEM: Avionics, Flight_Software
+SUBTEAM_OWNER: Electrical, Software, Controls
+INDIVIDUAL_OWNER: Systems Lead
+VEHICLE_CONFIGURATION: TVC-F1
+MISSION_PHASE: Powered ascent
+FLIGHT_ATTEMPT: Flight 1
+OPEN_ITEM_STATUS: None
+VERIFICATION_METHOD: Analysis
+VERIFICATION_PLAN_LINK: docs/verification/attitude-estimate-analysis.md
+STATUS: Approved
+STATEMENT: The vehicle shall estimate roll, pitch, and yaw attitude during powered ascent.
+RATIONALE: This requirement supports TVC-MO-001 by providing the state estimate needed for attitude control.
+RELATIONS:
+- TYPE: Parent
+  VALUE: TVC-MO-001
+
+[REQUIREMENT]
+UID: TVC-REQ-002
+LEVEL: L1
+REQUIREMENT_TYPE: Safety
+TITLE: Range Safety Compliance
+APPLICABLE_SUBSYSTEM: N_A
+SUBTEAM_OWNER: Systems
+INDIVIDUAL_OWNER: Systems Lead
+VEHICLE_CONFIGURATION: All
+MISSION_PHASE: All
+FLIGHT_ATTEMPT: All
+OPEN_ITEM_STATUS: None
+VERIFICATION_METHOD: Inspection
+STATUS: Approved
+STATEMENT: The vehicle shall comply with applicable range safety rules.
+RATIONALE: This requirement supports TVC-MC-001 by making the mission constraint enforceable.
+RELATIONS:
+- TYPE: Parent
+  VALUE: TVC-MC-001

@@ -1,0 +1,34 @@
+[DOCUMENT]
+TITLE: Mission Records
+
+[GRAMMAR]
+IMPORT_FROM_FILE: @program
+
+[MISSION_RECORD]
+UID: TVC-MO-001
+RECORD_TYPE: Objective
+TITLE: Controlled Powered Ascent
+SUBTEAM_OWNER: Systems
+INDIVIDUAL_OWNER: Systems Lead
+VEHICLE_CONFIGURATION: TVC-F1
+MISSION_PHASE: Powered ascent
+FLIGHT_ATTEMPT: Flight 1
+OPEN_ITEM_STATUS: None
+STATUS: Approved
+STATEMENT: Demonstrate that the vehicle can maintain vertical attitude during powered ascent under nominal launch conditions.
+RATIONALE: This objective supports the program goal of demonstrating thrust-vector control in flight.
+
+[MISSION_RECORD]
+UID: TVC-MC-001
+RECORD_TYPE: Constraint
+TITLE: Range Safety Compliance
+SUBTEAM_OWNER: Systems
+INDIVIDUAL_OWNER: Systems Lead
+VEHICLE_CONFIGURATION: All
+MISSION_PHASE: All
+FLIGHT_ATTEMPT: All
+OPEN_ITEM_STATUS: None
+STATUS: Approved
+STATEMENT: The vehicle shall comply with applicable range safety rules for the selected launch site.
+RATIONALE: This constraint is required by the launch authority.
+
