@@ -1,2 +1,79 @@
 # syseng-tools
-Systems engineering tooling for GNC (a StrictDoc wrapper)
+
+Shared systems-engineering tooling for rocket program documentation: StrictDoc
+integration, controlled-record checks, risk reporting, and generated review
+artifacts.
+
+## Documentation Boundary
+
+Author-facing usage is defined in `docs/strictdoc-integration.md` in
+[Georgia-Tech-GNC/docs-systems-engineering](https://github.com/Georgia-Tech-GNC/docs-systems-engineering).
+
+This README is for maintaining the shared tooling package. It explains what the
+package owns and how the commands work under the hood.
+
+## Command Entry Point
+
+```text
+syseng check
+syseng export
+syseng serve
+syseng risk
+```
+
+The installed console command is `syseng`.
+
+Program repositories provide a `syseng.toml` file. The command reads that file
+to locate the project root, project prefix, records directory, and allowed
+applicability values.
+
+## Command Internals
+
+`syseng check` invokes StrictDoc parsing first, then runs shared Python checks
+against the generated StrictDoc JSON model.
+
+`syseng export` copies the package grammar to `build/syseng/grammar/`, writes a
+temporary StrictDoc config to `build/syseng/strictdoc_config.py`, invokes
+StrictDoc export for HTML, JSON, and Excel, then generates shared reports.
+
+`syseng risk` regenerates the shared risk register from an existing StrictDoc
+JSON export. By default, it reads `build/strictdoc/json/index.json` and writes
+`risk-register.json`, `risk-register.csv`, and `risk-register.md` to
+`build/syseng/`.
+
+`syseng serve` validates that `build/strictdoc/html/index.html` exists, then
+serves `build/strictdoc/html` with Python's static HTTP server. It does not run
+`syseng export` implicitly.
+
+## Program Contract
+
+Program repositories are expected to provide:
+
+- `syseng.toml`
+- a configured records directory
+- StrictDoc `.sdoc` source files using the shared grammar
+
+Minimal `syseng.toml`:
+
+```toml
+project_title = "Sample TVC"
+project_prefix = "TVC"
+records_dir = "records"
+allowed_vehicle_configurations = ["TVC-F1"]
+allowed_mission_phases = ["Powered ascent"]
+allowed_flight_attempts = ["Flight 1"]
+```
+
+During local development, install this package in editable mode:
+
+```text
+python -m pip install -e .
+```
+
+Run the test suite with:
+
+```text
+python -m unittest discover -s tests
+```
+
+Tests that exercise `syseng serve` bind a local `127.0.0.1` socket.
