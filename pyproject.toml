@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "syseng-tools"
+version = "0.1.0"
+description = "Shared systems-engineering tooling for StrictDoc-based program documentation."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "strictdoc>=0.27.1,<0.28",
+]
+
+[project.scripts]
+syseng = "syseng_tools.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+syseng_tools = ["strictdoc/*.sgra"]
+
