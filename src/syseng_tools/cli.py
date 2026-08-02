@@ -18,7 +18,7 @@ from syseng_tools.strictdoc_runner import export_strictdoc
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="syseng",
-        description="Shared systems-engineering tooling for program records.",
+        description="Systems-engineering tooling for program records.",
     )
     parser.add_argument(
         "--project-root",
@@ -31,7 +31,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     export_parser = subparsers.add_parser(
         "export",
-        help="Generate StrictDoc outputs and shared reports.",
+        help="Generate StrictDoc outputs and reports.",
     )
     export_parser.add_argument(
         "--output-dir",
@@ -42,7 +42,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     check_parser = subparsers.add_parser(
         "check",
-        help="Run StrictDoc parsing and shared automated checks.",
+        help="Run StrictDoc parsing and automated checks.",
     )
     check_parser.add_argument(
         "--warnings-as-errors",

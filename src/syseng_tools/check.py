@@ -1068,7 +1068,7 @@ def _first_error_line(output: str) -> str:
         stripped = line.strip()
         if stripped.startswith("error:"):
             return stripped.removeprefix("error:").strip()
-    return "StrictDoc failed before shared checks could run."
+    return "StrictDoc failed before syseng checks could run."
 
 
 def _result_sort_key(item: CheckResult) -> tuple[str, str, int, str]:

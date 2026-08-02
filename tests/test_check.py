@@ -11,7 +11,7 @@ from syseng_tools.project import ProjectConfig
 
 
 class CheckTests(unittest.TestCase):
-    def test_clean_project_has_no_shared_check_results(self) -> None:
+    def test_clean_project_has_no_syseng_check_results(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             project = make_project(root)
