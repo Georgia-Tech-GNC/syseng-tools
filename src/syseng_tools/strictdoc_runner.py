@@ -114,6 +114,7 @@ def _looks_like_parallelization_failure(output: str) -> bool:
         "SC_SEM_NSEMS_MAX" in output
         or "MultiprocessingParallelizer" in output
         or "Operation not permitted" in output
+        or "process in the process pool was terminated abruptly" in output
     )
 
 

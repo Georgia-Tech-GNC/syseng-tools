@@ -86,6 +86,44 @@ class ExportTests(unittest.TestCase):
             retry_command = run.call_args_list[1].args[0]
             self.assertEqual(retry_command[-1], "--no-parallelization")
 
+    def test_export_retries_without_parallelization_after_process_pool_failure(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            project = make_project(root)
+
+            with (
+                patch(
+                    "syseng_tools.strictdoc_runner.shutil.which",
+                    return_value="/usr/bin/strictdoc",
+                ),
+                patch("syseng_tools.strictdoc_runner.subprocess.run") as run,
+            ):
+                run.side_effect = [
+                    subprocess.CompletedProcess(
+                        args=[],
+                        returncode=1,
+                        stdout="",
+                        stderr=(
+                            "A process in the process pool was terminated "
+                            "abruptly while the future was running or pending."
+                        ),
+                    ),
+                    subprocess.CompletedProcess(
+                        args=[],
+                        returncode=0,
+                        stdout="exported\n",
+                        stderr="",
+                    ),
+                ]
+
+                export_strictdoc(project, root / "build" / "strictdoc")
+
+            self.assertEqual(run.call_count, 2)
+            retry_command = run.call_args_list[1].args[0]
+            self.assertEqual(retry_command[-1], "--no-parallelization")
+
     def test_command_export_generates_strictdoc_outputs_and_risk_reports(self) -> None:
         fixture = Path(__file__).parent / "fixtures" / "sample_project"
         with tempfile.TemporaryDirectory() as tmpdir:

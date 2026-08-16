@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "syseng-tools"
-version = "0.1.1"
+version = "0.1.2"
 description = "Systems-engineering tooling for StrictDoc-based program documentation."
 readme = "README.md"
 requires-python = ">=3.11"
